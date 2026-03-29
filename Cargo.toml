@@ -1,0 +1,17 @@
+[package]
+name = "bux2"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+description = "A refreshingly simple [b]uild2 [ux]."
+keywords = ["c++", "cpp", "cxx", "build", "package"]
+categories = ["command-line-utilities", "developer-tools"]
+
+[dependencies]
+toml = "1.1.0"
+serde = { version = "1.0.228", features = ["derive"] } 
+semver = { version = "1.0.27", features = ["serde"] }
+spdx-expression = "0.5.2"
+url = { version = "2.5.8", features = ["serde"] }
+anyhow = "1.0.102"
+clap = { version = "4.6.0", features = ["derive"] }

@@ -50,7 +50,7 @@ The potential values are as follows:
 | "beta" | https://pkg.cppget.org/1/beta/ | More refined, polished packages compared to "alpha"
 
 ### Version control (github) dependencies
-Dependencies fetched from github or other source repositores are not recommoended unless you are sure they provide build2 metadata. cppget packages always do.
+Dependencies fetched from github or other source repositores are not recomended unless you are sure they provide build2 metadata. cppget packages always do.
 
 If you are sure the repository provides the required metadata, add it like so:
 ```toml

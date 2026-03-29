@@ -6,7 +6,7 @@ license = "MIT"
 repository = "https://github.com/kaden126/bux2"
 description = "A refreshingly simple [b]uild2 [ux]."
 keywords = ["c++", "cpp", "cxx", "build", "package"]
-categories = ["command-line-utilities", "developer-tools"]
+categories = ["command-line-interface", "development-tools::build-utils"]
 
 [dependencies]
 toml = "1.1.0"

@@ -3,6 +3,7 @@ name = "bux2"
 version = "0.1.0"
 edition = "2024"
 license = "MIT"
+repository = "https://github.com/kaden126/bux2"
 description = "A refreshingly simple [b]uild2 [ux]."
 keywords = ["c++", "cpp", "cxx", "build", "package"]
 categories = ["command-line-utilities", "developer-tools"]

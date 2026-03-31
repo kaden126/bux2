@@ -9,6 +9,17 @@ Configuration is done through a single `bux2.toml` file that maps directly onto 
 
 For the best experience, `bux2.toml` and the `bux2` CLI are used together, but they don't depend on each other, and you may use a combination of traditional `build2` and `bux2` tools.
 
+## Installation
+Install `bux2` from source with [`cargo`](https://github.com/rust-lang/cargo):
+```sh
+cargo install bux2 --locked
+```
+Install prebuilt binary with [`cargo-binstall`](https://github.com/cargo-bins/cargo-binstall):
+```
+cargo binstall bux2
+```
+Or, download a prebuilt binary from the [releases](https://github.com/kaden126/bux2/releases/) page.
+
 ## Example
 The `bux2` cli offers a `new` subcommand for creating new projects.
 ```sh

@@ -109,6 +109,7 @@ pub fn init(profile: &str) -> anyhow::Result<()> {
         .arg("-C")
         .arg(format!("@{profile}"))
         .arg("cxx")
+        .arg("--wipe")
         .arg("--options-file")
         .arg(format!("build/{profile}.config"))
         .spawn()
@@ -134,6 +135,19 @@ pub fn deinit(profile: &str) -> anyhow::Result<()> {
         .wait_with_output()
         .with_context(|| "Failed to wait on bdep process.")?;
 
+    if !output.status.success() {
+        return Err(anyhow!("bdep exited with exit code: {}", output.status));
+    }
+    
+    let output = Command::new("bdep")
+        .arg("config")
+        .arg("remove")
+        .arg(format!("@{profile}"))
+        .spawn()
+        .with_context(|| "Failed to spawn bdep.")?
+        .wait_with_output()
+        .with_context(|| "Failed to wait on bdep process.")?;
+    
     if !output.status.success() {
         return Err(anyhow!("bdep exited with exit code: {}", output.status));
     }

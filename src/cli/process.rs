@@ -39,12 +39,11 @@ pub fn fetch(profile: &str) -> anyhow::Result<()> {
     Ok(())
 }
 
-pub fn ci(profile: &str) -> anyhow::Result<()> {
+pub fn ci() -> anyhow::Result<()> {
     crate::generate_build_files().with_context(|| "Failed to generate build files.")?;
 
     let output = Command::new("bdep")
         .arg("ci")
-        .arg(format!("@{profile}"))
         .spawn()
         .with_context(|| "Failed to spawn bdep.")?
         .wait_with_output()
@@ -57,12 +56,11 @@ pub fn ci(profile: &str) -> anyhow::Result<()> {
     Ok(())
 }
 
-pub fn publish(profile: &str) -> anyhow::Result<()> {
+pub fn publish() -> anyhow::Result<()> {
     crate::generate_build_files().with_context(|| "Failed to generate build files.")?;
 
     let output = Command::new("bdep")
         .arg("publish")
-        .arg(format!("@{profile}"))
         .spawn()
         .with_context(|| "Failed to spawn bdep.")?
         .wait_with_output()

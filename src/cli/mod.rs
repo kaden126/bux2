@@ -71,19 +71,13 @@ pub enum Commands {
     /**
     Publish the package to https://cppget.org.
      */
-    Publish {
-        #[clap(long, short)]
-        profile: String
-    },
+    Publish,
     
     #[command(name = "ci")]
     /**
     Submit the package to build2 ci.
      */
-    Ci {
-        #[clap(long, short)]
-        profile: String
-    },
+    Ci,
     
     #[command(name = "new")]
     /**

@@ -18,8 +18,8 @@ fn main() -> anyhow::Result<()> {
             process::clean(&profile, recursive)
                 .with_context(|| "Failed to clean build artifacts.")?;
         },
-        Commands::Ci { profile } => {
-            process::ci(&profile)
+        Commands::Ci => {
+            process::ci()
                 .with_context(|| "Failed run ci.")?;
         },
         Commands::DeinitProfile { profile } => {
@@ -34,8 +34,8 @@ fn main() -> anyhow::Result<()> {
             process::init(&profile)
                 .with_context(|| "Failed to initialize profile.")?;
         },
-        Commands::Publish { profile } => {
-            process::publish(&profile)
+        Commands::Publish => {
+            process::publish()
                 .with_context(|| "Failed to publish.")?;
         },
         Commands::New { name } => {

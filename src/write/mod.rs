@@ -3,6 +3,7 @@ pub mod bootstrap;
 pub mod buildfile;
 pub mod manifest;
 pub mod repos;
+pub mod testscript;
 
 use crate::read::Config;
 use anyhow::Context;

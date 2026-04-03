@@ -77,7 +77,7 @@ libawesome = { path = "/Users/user/c++/libawesome", version = "1.0.0", targets =
 ## Roadmap
 `bux2` is a work-in-progress, and is also limited by `build2`'s progress and documentation. Some planned features:
 
-- [ ] Support for `build2` native testing via `testscript`.
+- [X] Support for `build2` native testing via `testscript`.
 - [ ] Build-time dependencies. Currently can be specified, but don't work as intended.
 - [ ] Advanced project templates.
 

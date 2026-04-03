@@ -9,7 +9,7 @@ keywords = ["c++", "cpp", "cxx", "build", "package"]
 categories = ["command-line-interface", "development-tools::build-utils"]
 
 [dependencies]
-toml = "1.1.1"
+toml = "1.1.2"
 serde = { version = "1.0.228", features = ["derive"] } 
 semver = { version = "1.0.27", features = ["serde"] }
 spdx-expression = "0.5.2"

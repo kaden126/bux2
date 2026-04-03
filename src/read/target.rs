@@ -11,6 +11,8 @@ pub struct Target {
     pub kind: TargetType,
 
     pub src: PathBuf,
+    
+    pub testing: Option<bool>
 }
 
 #[derive(Debug, Deserialize)]

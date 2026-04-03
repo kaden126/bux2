@@ -18,6 +18,9 @@ use toolchain::Toolchain;
 pub mod extensions;
 use extensions::Extensions;
 
+pub mod test;
+use test::Test;
+
 #[derive(Debug, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct Config {
@@ -29,6 +32,8 @@ pub struct Config {
     pub build_dependencies: Option<Dependencies>,
     
     pub target: Vec<Target>,
+    
+    pub test: Option<Vec<Test>>,
     
     pub profile: HashMap<String, Toolchain>,
     

@@ -1,6 +1,6 @@
 [package]
 name = "bux2"
-version = "0.1.1"
+version = "0.2.0"
 edition = "2024"
 license = "MIT"
 repository = "https://github.com/kaden126/bux2"
@@ -9,7 +9,7 @@ keywords = ["c++", "cpp", "cxx", "build", "package"]
 categories = ["command-line-interface", "development-tools::build-utils"]
 
 [dependencies]
-toml = "1.1.1"
+toml = "1.1.2"
 serde = { version = "1.0.228", features = ["derive"] } 
 semver = { version = "1.0.27", features = ["serde"] }
 spdx-expression = "0.5.2"

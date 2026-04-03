@@ -14,7 +14,7 @@ pub fn write_bootstrap(config: &Config) -> anyhow::Result<()> {
     
     writeln!(
         &mut file,
-        "project = {}\nusing version\nusing config\nusing install\nusing dist",
+        "project = {}\nusing version\nusing config\nusing install\nusing dist\nusing test",
         config.package.name
     ).with_context(|| format!("Failed to write {}.", path.display()))?;
     

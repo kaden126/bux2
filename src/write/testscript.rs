@@ -9,7 +9,9 @@ pub fn write_testscripts(config: &Config) -> anyhow::Result<()> {
     
     if let Some(tests) = &config.test {
         for test in tests {
-            let testscript_path = path.join(&test.src);
+            let testscript_path = path
+                .join(&test.src)
+                .join("testscript");
             
             let mut file = std::fs::File::create(&testscript_path)
                 .with_context(|| format!("Failed to open {}", testscript_path.display()))?;

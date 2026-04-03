@@ -47,8 +47,14 @@ pub fn write_buildfiles(config: &Config) -> anyhow::Result<()> {
         
         match target.kind {
             TargetType::Exe => {
-                writeln!(&mut file, "exe{{{}}}: {{hxx cxx mxx}}{{**}} $libs", target.name)
-                   .with_context(|| format!("Failed to write {}.", path.display()))?;
+                if let Some(true) = target.testing {
+                    writeln!(&mut file, "exe{{{}}}: {{hxx cxx mxx}}{{**}} $libs testscript", target.name)
+                        .with_context(|| format!("Failed to write {}.", path.display()))?;
+                }
+                else {
+                    writeln!(&mut file, "exe{{{}}}: {{hxx cxx mxx}}{{**}} $libs", target.name)
+                        .with_context(|| format!("Failed to write {}.", path.display()))?;
+                }
             },
             
             TargetType::Lib => {

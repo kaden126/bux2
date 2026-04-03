@@ -1,9 +1,10 @@
 use serde::{Deserialize};
-use std::fmt::Display;
+use std::{fmt::Display, path::PathBuf};
 
 #[derive(Debug, Deserialize)]
 pub struct Test {
     pub description: String,
+    pub src: PathBuf,
     pub args: Option<Vec<String>>,
     
     pub stdout: Option<String>,

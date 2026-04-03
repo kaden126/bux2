@@ -30,5 +30,8 @@ pub fn write(config: &Config) -> anyhow::Result<()> {
     repos::write_repos(config)
         .with_context(|| "Writing to manifest failed.")?;
     
+    testscript::write_testscripts(config)
+        .with_context(|| "Writing to testscripts failed.")?;
+    
     Ok(())
 }

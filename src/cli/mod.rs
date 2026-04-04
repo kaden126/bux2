@@ -1,4 +1,5 @@
 pub mod process;
+pub mod generate;
 use clap::{Parser, Subcommand};
 
 #[derive(Debug, Parser)]
@@ -84,6 +85,11 @@ pub enum Commands {
     Generate a new template package.
      */
     New {
-        name: String
+        name: String,
+        #[clap(long, short)]
+        /**
+        Template to generate a project; lib, exe, and blank are accepted.
+         */
+        template: Option<String>
     }
 }

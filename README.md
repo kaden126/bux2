@@ -10,6 +10,13 @@ Configuration is done through a single `bux2.toml` file that maps directly onto 
 For the best experience, `bux2.toml` and the `bux2` CLI are used together, but they don't depend on each other, and you may use a combination of traditional `build2` and `bux2` tools.
 
 ## Installation
+
+Ensure you have `build2` [installed](https://build2.org/install.xhtml) on your machine.
+Ensure the `bdep` command is installed and up to date:
+```sh
+bdep --version
+```
+
 Install `bux2` from source with [`cargo`](https://github.com/rust-lang/cargo):
 ```sh
 cargo install bux2 --locked
@@ -79,7 +86,7 @@ libawesome = { path = "/Users/user/c++/libawesome", version = "1.0.0", targets =
 
 - [X] Support for `build2` native testing via `testscript`.
 - [ ] Build-time dependencies. Currently can be specified, but don't work as intended.
-- [ ] Advanced project templates.
+- [X] Advanced project templates.
 
 The following features will be implemented as `build2` makes them available. 
 - [ ] `compile_commands.json` generation. Supposed to be available in the next `build2` release!

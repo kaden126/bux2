@@ -33,6 +33,9 @@ fn main() -> anyhow::Result<()> {
         }
         Commands::New { name, template } => {
             process::new(&name, template).with_context(|| "Failed to generate new project.")?;
+        },
+        Commands::Test { profile } => {
+            process::test(&profile).with_context(|| "Failed to test project.")?;
         }
     }
 

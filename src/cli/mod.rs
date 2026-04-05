@@ -91,5 +91,11 @@ pub enum Commands {
         Template to generate a project; lib, exe, and blank are accepted.
          */
         template: Option<String>
+    },
+
+    #[command(name = "test")]
+    Test {
+        #[clap(long, short)]
+        profile: String
     }
 }

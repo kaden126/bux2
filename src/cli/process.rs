@@ -169,3 +169,21 @@ pub fn new(name: &str, template: Option<String>) -> anyhow::Result<()> {
         generate_cli(name)
     }
 }
+
+pub fn test(profile: &str) -> anyhow::Result<()> {
+    crate::generate_build_files().with_context(|| "Failed to generate build files.")?;
+
+    let output = Command::new("bdep")
+        .arg("test")
+        .arg(format!("@{profile}"))
+        .spawn()
+        .with_context(|| "Failed to spawn bdep.")?
+        .wait_with_output()
+        .with_context(|| "Failed to wait on bdep process.")?;
+
+    if !output.status.success() {
+        return Err(anyhow!("bdep exited with exit code: {}", output.status));
+    }
+
+    Ok(())
+}

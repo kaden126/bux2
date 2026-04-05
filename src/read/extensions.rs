@@ -20,3 +20,19 @@ impl Display for Extensions {
         )
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use toml::toml;
+    use super::*;
+
+    #[test]
+    fn parse_extensions() {
+        let toml = toml! {
+            sources = "cpp"
+            header = "hpp"
+            modules = "mpp"
+        };
+        Extensions::deserialize(toml).unwrap();
+    }
+}

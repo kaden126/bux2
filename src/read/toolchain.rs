@@ -49,3 +49,22 @@ impl Display for Toolchain {
         Ok(())
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use toml::toml;
+    use super::*;
+
+    #[test]
+    fn parse_toolchain() {
+        let toml = toml! {
+            std = "latest"
+            compiler = "clang++"
+
+            coptions = ["-O2"]
+            poptions = ["-DNDEBUG"]
+            loptions = ["-flto=thin"]
+        };
+        Toolchain::deserialize(toml).unwrap();
+    }
+}

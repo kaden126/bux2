@@ -51,3 +51,25 @@ impl Display for Test {
         writeln!(f, "")
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use toml::toml;
+    use super::*;
+
+    #[test]
+    fn parse_test() {
+        let toml = toml! {
+            description = "Test an important thing"
+            src = "src"
+            args = ["Hello", "World!"]
+
+            stdout = "Hello"
+            stderr = "World"
+            stdin = "Input!"
+
+            exit = "== 0"
+        };
+        Test::deserialize(toml).unwrap();
+    }
+}

@@ -31,3 +31,20 @@ pub enum TargetType {
     )]
     Exe
 }
+
+#[cfg(test)]
+mod tests {
+    use toml::toml;
+    use super::*;
+
+    #[test]
+    fn parse_target() {
+        let toml = toml! {
+            name = "my-exe"
+            kind = "exe"
+            src = "src"
+            testing = false
+        };
+        Target::deserialize(toml).unwrap();
+    }
+}

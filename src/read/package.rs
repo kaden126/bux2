@@ -22,3 +22,28 @@ pub struct Package {
     pub documentation: Option<Url>,
     pub repository: Option<Url>,
 }
+
+#[cfg(test)]
+mod tests {
+    use toml::toml;
+    use super::*;
+
+    #[test]
+    fn parse_package() {
+        let toml = toml! {
+            name = "my-project"
+            version = "0.1.0"
+            summary = "testing for bux2"
+            license = "MIT"
+
+            keywords = ["testing", "validation"]
+            categories = ["test the stuff!", "high quality testing"]
+            readme = "README.md"
+
+            homepage = "https://my-project-page.com"
+            documentation = "https://my-project-docs.com"
+            repository = "https://my-project-source.com"
+        };
+        Package::deserialize(toml).unwrap();
+    }
+}

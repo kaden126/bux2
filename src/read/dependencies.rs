@@ -57,3 +57,20 @@ pub enum Channel {
     #[serde(alias = "alpha")]
     Alpha,
 }
+
+#[cfg(test)]
+mod tests {
+    use toml::toml;
+    use super::*;
+
+    #[test]
+    fn parse_dependencies() {
+        let toml = toml! {
+            channels = ["stable", "testing", "legacy"]
+            libremote = { version = "1.0.0", targets = ["remote"] }
+            libpath = { version = "1.0.0", path = "/Users/me/libgoodbye", targets = ["path"] }
+            libgit = { version = "1.0.0", repo = "https://me/libgit.git", targets = ["git"] }
+        };
+        Dependencies::deserialize(toml).unwrap();
+    }
+}

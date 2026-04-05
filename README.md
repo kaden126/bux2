@@ -90,3 +90,46 @@ libawesome = { path = "/Users/user/c++/libawesome", version = "1.0.0", targets =
 
 The following features will be implemented as `build2` makes them available. 
 - [ ] `compile_commands.json` generation. Supposed to be available in the next `build2` release!
+
+## Status
+Project status and quality reports, follow these and watch the project grow!
+
+### CI/CD
+
+Build and testing:
+
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/kaden126/bux2/rust.yml)
+
+Packaging and release:
+
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/kaden126/bux2/release.yml?label=packaging)
+
+### Versioning
+
+[crates.io](https://crates.io/crates/bux2):
+
+![Crates.io Version](https://img.shields.io/crates/v/bux2)
+
+Github relases:
+
+![GitHub Release](https://img.shields.io/github/v/release/kaden126/bux2)
+
+### Downloads
+
+Crate downloads:
+
+![Crates.io Total Downloads](https://img.shields.io/crates/d/bux2)
+
+Github downloads:
+
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/kaden126/bux2/total)
+
+### Activity
+
+Commits per month:
+
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/kaden126/bux2)
+
+Contributors:
+
+![GitHub contributors](https://img.shields.io/github/contributors-anon/kaden126/bux2)

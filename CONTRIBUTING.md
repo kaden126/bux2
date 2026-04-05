@@ -10,3 +10,6 @@ or features you would like to have and open an issue.
 ## 2. Write code
 If you feel confident enough, code your own solution to an issue, and create a pull request!
 If the changes merge without breaking, and solve the problem, odds are they will be approved.
+
+## 3. Spread the word!
+If you enjoy `bux2`, let people know! Help the `bux2` community grow ❤️.

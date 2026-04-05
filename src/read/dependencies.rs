@@ -1,22 +1,22 @@
-use std::{collections::HashMap, path::PathBuf};
 use semver::VersionReq;
 use serde::Deserialize;
+use std::{collections::HashMap, path::PathBuf};
 use url::Url;
 
 #[derive(Debug, Deserialize)]
 pub struct Dependencies {
-   pub channels: Option<Vec<Channel>>,
-   
-   #[serde(flatten)]
-   pub deps: Option<HashMap<String, Dependency>>
+    pub channels: Option<Vec<Channel>>,
+
+    #[serde(flatten)]
+    pub deps: Option<HashMap<String, Dependency>>,
 }
 
 #[derive(Debug, Deserialize)]
 pub struct Dependency {
     pub targets: Vec<String>,
-    
+
     #[serde(flatten)]
-    pub info: DependencyInfo
+    pub info: DependencyInfo,
 }
 
 #[derive(Debug, Deserialize)]
@@ -29,19 +29,19 @@ pub enum DependencyInfo {
 
 #[derive(Debug, Deserialize)]
 pub struct RemoteDep {
-    pub version: VersionReq
+    pub version: VersionReq,
 }
 
 #[derive(Debug, Deserialize)]
 pub struct LocalDep {
     pub path: PathBuf,
-    pub version: VersionReq
+    pub version: VersionReq,
 }
 
 #[derive(Debug, Deserialize)]
 pub struct GitDep {
     pub repo: Url,
-    pub version: VersionReq
+    pub version: VersionReq,
 }
 
 #[derive(Debug, Deserialize)]
@@ -60,8 +60,8 @@ pub enum Channel {
 
 #[cfg(test)]
 mod tests {
-    use toml::toml;
     use super::*;
+    use toml::toml;
 
     #[test]
     fn parse_dependencies() {

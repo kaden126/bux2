@@ -1,4 +1,4 @@
-use std::{fs::File, io::Read, collections::HashMap};
+use std::{collections::HashMap, fs::File, io::Read};
 
 use anyhow::Context;
 use serde::Deserialize;
@@ -25,41 +25,37 @@ use test::Test;
 #[serde(deny_unknown_fields)]
 pub struct Config {
     pub package: Package,
-    
+
     pub dependencies: Option<Dependencies>,
-    
+
     #[serde(rename = "build-dependencies")]
     pub build_dependencies: Option<Dependencies>,
-    
+
     pub target: Vec<Target>,
-    
+
     pub test: Option<Vec<Test>>,
-    
+
     pub profile: HashMap<String, Toolchain>,
-    
-    pub extensions: Option<Extensions>
+
+    pub extensions: Option<Extensions>,
 }
 
 impl Config {
     pub fn new() -> anyhow::Result<Self> {
-        let mut file = File::open("bux2.toml")
-            .with_context(|| "Failed to open ./build2.toml")?;
-        
+        let mut file = File::open("bux2.toml").with_context(|| "Failed to open ./build2.toml")?;
+
         let mut content = String::new();
         file.read_to_string(&mut content)
             .with_context(|| "Failed to read from ./build2.toml")?;
-        
-        Ok(
-            toml::from_slice(content.as_bytes())
-                .with_context(|| "Failed to parse TOML.")?
-        )
+
+        Ok(toml::from_slice(content.as_bytes()).with_context(|| "Failed to parse TOML.")?)
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use toml::toml;
     use super::*;
+    use toml::toml;
 
     #[test]
     fn parse_config() {

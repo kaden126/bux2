@@ -3,11 +3,10 @@ use std::io::Write;
 use anyhow::Context;
 
 pub fn generate_cli(name: &str) -> anyhow::Result<()> {
-    let compiler = std::env::var("CXX")
-        .unwrap_or("clang++".into());
+    let compiler = std::env::var("CXX").unwrap_or("clang++".into());
 
     let config = format!(
-r#"[package]
+        r#"[package]
 name = "{name}"
 version = "0.1.0"
 summary = "A CLI package built with build2 + bux2!"
@@ -47,10 +46,11 @@ compiler = "{compiler}"
 # poptions = ["-DNDEBUG"]
 # loptions = []
 # Uncomment to enable C++ modules (C++20)
-# modules = true"#);
+# modules = true"#
+    );
 
     let source = format!(
-r#"
+        r#"
 #include <iostream>
 
 int main(int argc, char** argv) {{
@@ -58,7 +58,8 @@ int main(int argc, char** argv) {{
         std::cerr << "usage: {name} <NAME>\n";
     }}
 }}
-"#);
+"#
+    );
 
     let path = std::env::current_dir()
         .with_context(|| "Invalid working directory.")?
@@ -74,11 +75,14 @@ int main(int argc, char** argv) {{
 
     writeln!(&mut config_file, "{config}")?;
 
-    let source_path = path
-        .join("src");
-        
-    std::fs::create_dir(&source_path)
-        .with_context(|| format!("Failed to create source directory {}", source_path.display()))?;
+    let source_path = path.join("src");
+
+    std::fs::create_dir(&source_path).with_context(|| {
+        format!(
+            "Failed to create source directory {}",
+            source_path.display()
+        )
+    })?;
 
     let main_path = source_path.join("main.cpp");
 
@@ -92,11 +96,10 @@ int main(int argc, char** argv) {{
 }
 
 pub fn generate_lib(name: &str) -> anyhow::Result<()> {
-    let compiler = std::env::var("CXX")
-        .unwrap_or("clang++".into());
+    let compiler = std::env::var("CXX").unwrap_or("clang++".into());
 
     let config = format!(
-r#"[package]
+        r#"[package]
 name = "{name}"
 version = "0.1.0"
 summary = "A library package built with build2 + bux2!"
@@ -136,10 +139,10 @@ compiler = "{compiler}"
 # poptions = ["-DNDEBUG"]
 # loptions = []
 # Uncomment to enable C++ modules (C++20)
-# modules = true"#);
+# modules = true"#
+    );
 
-    let header =
-r#"
+    let header = r#"
 #pragma once
 #ifndef LIBGREET_HPP
 #define LIBGREET_HPP
@@ -151,8 +154,7 @@ void hello(const std::string& name);
 #endif
 "#;
 
-    let source =
-r#"
+    let source = r#"
 #include "greet.hpp"
 #include <iostream>
 
@@ -177,11 +179,14 @@ void hello(const std::string& name) {
     writeln!(&mut config_file, "{config}")?;
 
     // Header
-    let source_path = path
-        .join("src");
-        
-    std::fs::create_dir(&source_path)
-        .with_context(|| format!("Failed to create source directory {}", source_path.display()))?;
+    let source_path = path.join("src");
+
+    std::fs::create_dir(&source_path).with_context(|| {
+        format!(
+            "Failed to create source directory {}",
+            source_path.display()
+        )
+    })?;
 
     let header_path = source_path.join("greet.hpp");
 

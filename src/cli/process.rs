@@ -1,6 +1,6 @@
-use anyhow::{Context, anyhow};
-use std::{process::Command};
 use crate::cli::generate::*;
+use anyhow::{Context, anyhow};
+use std::process::Command;
 
 pub fn build(profile: &str) -> anyhow::Result<()> {
     crate::generate_build_files().with_context(|| "Failed to generate build files.")?;
@@ -136,7 +136,7 @@ pub fn deinit(profile: &str) -> anyhow::Result<()> {
     if !output.status.success() {
         return Err(anyhow!("bdep exited with exit code: {}", output.status));
     }
-    
+
     let output = Command::new("bdep")
         .arg("config")
         .arg("remove")
@@ -145,7 +145,7 @@ pub fn deinit(profile: &str) -> anyhow::Result<()> {
         .with_context(|| "Failed to spawn bdep.")?
         .wait_with_output()
         .with_context(|| "Failed to wait on bdep process.")?;
-    
+
     if !output.status.success() {
         return Err(anyhow!("bdep exited with exit code: {}", output.status));
     }
@@ -157,15 +157,12 @@ pub fn new(name: &str, template: Option<String>) -> anyhow::Result<()> {
     if let Some(template) = template {
         if template == "exe" {
             generate_cli(name)
-        }
-        else if template == "lib" {
+        } else if template == "lib" {
             generate_lib(name)
-        }
-        else {
+        } else {
             anyhow::bail!("No such template: {template}\nExpected `lib` or `exe`")
         }
-    }
-    else {
+    } else {
         generate_cli(name)
     }
 }

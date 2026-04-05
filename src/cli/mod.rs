@@ -1,5 +1,5 @@
-pub mod process;
 pub mod generate;
+pub mod process;
 use clap::{Parser, Subcommand};
 
 #[derive(Debug, Parser)]
@@ -9,7 +9,7 @@ bux2: A refreshingly simple *B*uild2 *UX*.
  */
 pub struct CliArgs {
     #[clap(subcommand)]
-    pub command: Commands
+    pub command: Commands,
 }
 
 #[derive(Debug, Subcommand)]
@@ -19,16 +19,16 @@ pub enum Commands {
     Only generate build2 files. Done automatically when running most other commands.
      */
     Generate,
-    
+
     #[command(name = "init")]
     /**
     Initialize a profile specified in `bux2.toml`.
      */
     InitProfile {
         #[clap(short, long)]
-        profile: String
+        profile: String,
     },
-    
+
     /**
     Deinitialize and remove an active profile.
      */
@@ -37,16 +37,16 @@ pub enum Commands {
         #[clap(short, long)]
         profile: String,
     },
-    
+
     #[command(name = "fetch")]
     /**
     Fetch dependencies.
      */
     Fetch {
         #[clap(long, short)]
-        profile: String
+        profile: String,
     },
-    
+
     #[command(name = "clean")]
     /**
     Remove build artifacts.
@@ -54,32 +54,32 @@ pub enum Commands {
     Clean {
         #[clap(long, short)]
         profile: String,
-        
+
         #[clap(long, short)]
         recursive: bool,
     },
-    
+
     #[command(name = "build")]
     /**
     Build a profile.
      */
     Build {
         #[clap(long, short)]
-        profile: String
+        profile: String,
     },
-    
+
     #[command(name = "publish")]
     /**
     Publish the package to https://cppget.org.
      */
     Publish,
-    
+
     #[command(name = "ci")]
     /**
     Submit the package to build2 ci.
      */
     Ci,
-    
+
     #[command(name = "new")]
     /**
     Generate a new template package.
@@ -90,12 +90,12 @@ pub enum Commands {
         /**
         Template to generate a project; lib, exe, and blank are accepted.
          */
-        template: Option<String>
+        template: Option<String>,
     },
 
     #[command(name = "test")]
     Test {
         #[clap(long, short)]
-        profile: String
-    }
+        profile: String,
+    },
 }

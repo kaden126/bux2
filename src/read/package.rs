@@ -1,6 +1,6 @@
 use std::path::PathBuf;
 
-use serde::{Deserialize};
+use serde::Deserialize;
 
 use semver::Version;
 use spdx_expression::SpdxExpression;
@@ -13,11 +13,11 @@ pub struct Package {
     pub version: Version,
     pub summary: String,
     pub license: SpdxExpression,
-    
+
     pub keywords: Option<Vec<String>>,
     pub categories: Option<Vec<String>>,
     pub readme: Option<PathBuf>,
-    
+
     pub homepage: Option<Url>,
     pub documentation: Option<Url>,
     pub repository: Option<Url>,
@@ -25,8 +25,8 @@ pub struct Package {
 
 #[cfg(test)]
 mod tests {
-    use toml::toml;
     use super::*;
+    use toml::toml;
 
     #[test]
     fn parse_package() {

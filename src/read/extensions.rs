@@ -1,5 +1,5 @@
-use std::fmt::Display;
 use serde::Deserialize;
+use std::fmt::Display;
 
 #[derive(Debug, Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -12,7 +12,7 @@ pub struct Extensions {
 impl Display for Extensions {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         writeln!(
-            f, 
+            f,
             "hxx{{*}}: extension = {}\ncxx{{*}}: extension = {}\nmxx{{*}}: extension = {}",
             self.headers.as_ref().unwrap_or(&"hxx".into()),
             self.sources.as_ref().unwrap_or(&"cxx".into()),
@@ -23,8 +23,8 @@ impl Display for Extensions {
 
 #[cfg(test)]
 mod tests {
-    use toml::toml;
     use super::*;
+    use toml::toml;
 
     #[test]
     fn parse_extensions() {

@@ -62,7 +62,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn parse_package() {
+    fn parse_config() {
         let toml = toml! {
             [package]
             name = "my-project"
@@ -80,7 +80,7 @@ mod tests {
 
             [extensions]
             sources = "cpp"
-            header = "hpp"
+            headers = "hpp"
             modules = "mpp"
 
             [profile.release]
@@ -96,6 +96,12 @@ mod tests {
             libremote = { version = "1.0.0", targets = ["remote"] }
             libpath = { version = "1.0.0", path = "/Users/me/libgoodbye", targets = ["path"] }
             libgit = { version = "1.0.0", repo = "https://me/libgit.git", targets = ["git"] }
+
+            [[target]]
+            name = "my-exe"
+            type = "exe"
+            src = "src"
+            testing = true
 
             [[test]]
             description = "Test an important thing"

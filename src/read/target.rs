@@ -41,7 +41,7 @@ mod tests {
     fn parse_target() {
         let toml = toml! {
             name = "my-exe"
-            kind = "exe"
+            type = "exe"
             src = "src"
             testing = false
         };

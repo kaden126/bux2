@@ -30,7 +30,7 @@ mod tests {
     fn parse_extensions() {
         let toml = toml! {
             sources = "cpp"
-            header = "hpp"
+            headers = "hpp"
             modules = "mpp"
         };
         Extensions::deserialize(toml).unwrap();

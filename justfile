@@ -7,9 +7,12 @@ release:
 
 publish version:
     cargo fmt
-    cargo fix
     git add *
+    git commit -m "Automatic formatting with cargo-fmt"
+    cargo fix
+    got add *
+    git commit -m "Automatic fixes with cargo-fix"
     git tag {{version}}
-    git push tags
+    git push
     cargo publish
     
